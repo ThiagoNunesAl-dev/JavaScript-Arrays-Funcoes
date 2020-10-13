@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let times = [{
+            nome: "Liverpool",
+            vitorias: 22,
+            empates: 7,
+            derrotas:1,
+            golspro:70,
+            golscontra:52
+        }, {
+            nome: "City",
+            vitorias: 24,
+            empates: 2,
+            derrotas:4,
+            golspro:79,
+            golscontra:21
+        }, {
+            nome: "Tottenham",
+            vitorias: 20,
+            empates: 1,
+            derrotas:9,
+            golspro:57,
+            golscontra:32
+        }, {
+            nome: "Arsenal",
+            vitorias: 18,
+            empates: 6,
+            derrotas:6,
+            golspro:63,
+            golscontra:39
+        }, {
+            nome: "Manchester United",
+            vitorias: 17,
+            empates: 7,
+            derrotas:6,
+            golspro:58,
+            golscontra:40
+        }, {
+            nome: "Chelsea",
+            vitorias: 17,
+            empates: 6,
+            derrotas:7,
+            golspro:50,
+            golscontra:33
+        }];
+    
+    // 1. Lista somente os times com 20 ou mais vitórias.
+    console.log("1. Lista somente os times com 20 ou mais vitórias.")
+    let timesMaiorIgual20 = times.filter(time => {
+        return time.vitorias >= 20
+    })
+    console.log(timesMaiorIgual20);
+    
+    // 2. Traz apenas os nomes dos times.
+    console.log("2. Traz apenas os nomes dos times.")
+    let nomeTimes = times.map(time => time.nome);
+    console.log(nomeTimes);
+
+    // 3. Adiciona mais um time chamado Wolverhampton, seguindo as estatísticas: 12 vitórias, 8 empates, 10 derrotas, 38 gols pró, 36 gols contra;
+    console.log("3. Adiciona mais um time, chamado Wolverhampton, seguindo as estatísticas: 12 vitórias, 8 empates, 10 derrotas, 38 gols pró, 36 gols contra;");
+    let time = {
+        nome: 'Wolverhampton',
+        vitorias: 12,
+        empates: 8,
+        derrotas: 10,
+        golspro: 38,
+        golscontra: 36
+    }
+    times.push(time);
+    console.log(times);
+
+    // 4. Mostra o nome, a quantidade de jogos (utilizando vitórias, empates e derrotas), a quantidade de vitorias, a quantidade de empates e a quantidade de derrotas de um time.
+    console.log("4. Mostra o nome, a quantidade de jogos (utilizando vitórias, empates e derrotas), a quantidade de vitorias, a quantidade de empates e a quantidade de derrotas de um time.");
+    let dadosTimes = times.map(time => {
+        return {
+            nome: time.nome,
+            quantidadeJogos: time.derrotas + time.empates + time.vitorias,
+            vitorias: time.vitorias,
+            derrotas: time.derrotas,
+            empates: time.empates,
+            saldogols: time.golspro - time.golscontra
+        }
+    });
+    console.log(dadosTimes);
+
+    // 5. Informa a quantidade de jogos do campeonato. 
+    console.log("5. Informa a quantidade de jogos do campeonato.");
+    let qtdeJogos = dadosTimes.reduce((jogos, time) => {
+        return jogos + (time.quantidadeJogos)
+    }, 0)
+    console.log(qtdeJogos);
+    </script>
+</body>
+
+</html>
